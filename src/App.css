@@ -1,3 +1,5 @@
+@import "react-slideshow-image/dist/styles.css";
+
 .header {
   display: flex;
   margin: 10px 10%;
@@ -48,12 +50,28 @@
   padding-top: 10px;
 }
 
-.slideshow-container {
+.slide {
   width: 100%;
-  height: 400px;
-  margin: 10px 0;
-  display: flex;
   background-color: gray;
+  text-align: center;
+  height: 550px;
+  border-top: 1px solid black;
+}
+
+.slide-container {
+  width: 70%;
+  height: 500px;
+  margin: 20px 15%;
+  box-shadow: 0px 0px 10px #e6e6e6, 0px 0px 0px #e6e6e6, 0px 0px 0px #e6e6e6,
+    2px 2px 5px #e6e6e6, 0px 0px 0px #e6e6e6, 0px 0px 0px #e6e6e6;
+
+  text-align: center;
+}
+
+.slideshow-image {
+  width: 100%;
+  height: 500px;
+  text-align: center;
 }
 
 .slideshow-arrow {
@@ -64,4 +82,18 @@
   z-index: 1;
   text-align: center;
   display: flex;
+}
+
+.slideshow-img-first {
+  width: 300px;
+  height: 300px;
+}
+
+.slideshow-img-mid {
+  width: 300px;
+  height: 300px;
+}
+.slideshow-img-last {
+  width: 300px;
+  height: 300px;
 }

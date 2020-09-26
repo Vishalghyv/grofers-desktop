@@ -1,15 +1,16 @@
 import React from "react";
-import logo from "./logo.png";
+import logo from "./groffery-13.jpg";
 import left from "./left-arrow.svg";
 import right from "./right-arrow.svg";
 import "./App.css";
 import { Button, Form, FormControl } from "react-bootstrap";
+import { Zoom } from "react-slideshow-image";
 
 function Header() {
   return (
     <div className="header">
       <div className="header-logo">
-        <img src={logo} alt="logo" />
+        <img src={logo} width="350" height="200" alt="logo" />
       </div>
       <div className="header-search">
         <Form inline>
@@ -42,23 +43,24 @@ function NavBar() {
   );
 }
 
+const zoomOutProperties = {
+  duration: 5000,
+  transitionDuration: 800,
+  infinite: true,
+
+  scale: 0.7,
+  arrows: true
+};
+const images = [logo, logo, logo, logo, logo];
 function SlideShow() {
   return (
-    <div className="slideshow-container slideshow">
-      <div className="slideshow-arrow slideshow-left">
-        <img src={left} alt="left" width="30" />
-      </div>
-      <div className="slideshow-first">
-        <img src={logo} alt="logo" />
-      </div>
-      <div className="slideshow-mid">
-        <img src={logo} alt="logo" />
-      </div>
-      <div className="slideshow-last">
-        <img src={logo} alt="logo" />
-      </div>
-      <div className="slideshow-arrow slideshow-right">
-        <img src={right} alt="right" width="30" />
+    <div className="slide">
+      <div className="slide-container">
+        <Zoom {...zoomOutProperties}>
+          {images.map((each, index) => (
+            <img key={index} className="slideshow-image" src={each} />
+          ))}
+        </Zoom>
       </div>
     </div>
   );
@@ -66,7 +68,7 @@ function SlideShow() {
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Header />
       <NavBar />
       <SlideShow />
