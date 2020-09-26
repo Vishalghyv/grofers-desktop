@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./groffery-13.jpg";
+import logo from "./groffery.jpg";
 import left from "./left-arrow.svg";
 import right from "./right-arrow.svg";
 import "./App.css";
@@ -10,7 +10,7 @@ function Header() {
   return (
     <div className="header">
       <div className="header-logo">
-        <img src={logo} width="350" height="200" alt="logo" />
+        <img src={logo} width="250" height="100" alt="logo" />
       </div>
       <div className="header-search">
         <Form inline>
@@ -66,12 +66,66 @@ function SlideShow() {
   );
 }
 
+const Card = ({ image, content }) => {
+  return (
+    <div className="card-show">
+      <div className="card-image">
+        <img className="card-img" src={image} />
+      </div>
+      <div className="card-content">{content}</div>
+    </div>
+  );
+};
+
+const Content = ({ heading, content, number }) => {
+  return (
+    <div className="card-detail">
+      <div className="card-head">
+        {heading}
+      </div>
+      <div className="card-cont">
+        {content}
+      </div>
+      <div className="card-number">
+        Phone No -{number}
+      </div>
+    </div>
+  );
+};
+
+
+
+function Lists() {
+  return (
+    <div className="lists">
+      <Card image={logo} content=<Content heading ="Flyer Name" content="detail about flyer" number="Phone Number or other detial"/> />
+      <Card image={logo} content=<Content heading ="Flyer Name" content="detail about flyer" number="Phone Number or other detial"/> />
+      <Card image={logo} content=<Content heading ="Flyer Name" content="detail about flyer" number="Phone Number or other detial"/> />
+      <Card image={logo} content=<Content heading ="Flyer Name" content="detail about flyer" number="Phone Number or other detial"/> />
+      <Card image={logo} content=<Content heading ="Flyer Name" content="detail about flyer" number="Phone Number or other detial"/> />
+      <Card image={logo} content=<Content heading ="Flyer Name" content="detail about flyer" number="Phone Number or other detial"/> />
+
+    </div>
+  );
+}
+
+function Footer () {
+  return (
+    <div className="footer">
+      Footer
+    </div>
+  );
+}
+
+
 function App() {
   return (
     <div className="App">
       <Header />
       <NavBar />
       <SlideShow />
+      <Lists />
+      <Footer />
     </div>
   );
 }
