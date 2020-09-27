@@ -3,12 +3,21 @@ import logo from "./groffery.jpg";
 import left from "./left-arrow.svg";
 import right from "./right-arrow.svg";
 import "./App.css";
-import { Button, Form, FormControl } from "react-bootstrap";
+import {
+  Badge,
+  Button,
+  Breadcrumb,
+  Form,
+  FormControl,
+  ListGroup,
+  ListGroupItem
+} from "react-bootstrap";
+
+import { Card as Cards } from "react-bootstrap";
 import { Zoom } from "react-slideshow-image";
 
 import { MemoryRouter, Switch, Route } from "react-router-dom";
 
-import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { LinkContainer } from "react-router-bootstrap";
@@ -75,14 +84,15 @@ function SlideShow() {
   );
 }
 
-const Card = ({ image, content }) => {
+const Card = ({ image, index, content }) => {
+  var k = "/" + index;
   return (
-    <LinkContainer to="/about">
+    <LinkContainer to={k}>
       <div className="card-show">
         <div className="card-image">
           <img className="card-img" src={image} alt="Flyer" />
         </div>
-        <div className="card-content">{content}</div>
+        <div className="card-content"> {content}</div>
       </div>
     </LinkContainer>
   );
@@ -103,7 +113,16 @@ function Lists() {
     <div className="lists">
       <Card
         image={logo}
-        key="123"
+        index="123"
+        content=<Content
+          heading="Flyer Nayyme"
+          content="detail about flyer"
+          number="Phone Number or other detial"
+        />
+      />
+      <Card
+        image={logo}
+        index="123"
         content=<Content
           heading="Flyer Name"
           content="detail about flyer"
@@ -112,7 +131,7 @@ function Lists() {
       />
       <Card
         image={logo}
-        key="123"
+        index="123"
         content=<Content
           heading="Flyer Name"
           content="detail about flyer"
@@ -121,7 +140,7 @@ function Lists() {
       />
       <Card
         image={logo}
-        key="123"
+        index="123"
         content=<Content
           heading="Flyer Name"
           content="detail about flyer"
@@ -130,7 +149,7 @@ function Lists() {
       />
       <Card
         image={logo}
-        key="123"
+        index="123"
         content=<Content
           heading="Flyer Name"
           content="detail about flyer"
@@ -139,16 +158,7 @@ function Lists() {
       />
       <Card
         image={logo}
-        key="123"
-        content=<Content
-          heading="Flyer Name"
-          content="detail about flyer"
-          number="Phone Number or other detial"
-        />
-      />
-      <Card
-        image={logo}
-        key="123"
+        index="123"
         content=<Content
           heading="Flyer Name"
           content="detail about flyer"
@@ -166,29 +176,118 @@ function Footer() {
 function Home() {
   return (
     <>
-      <NavBar />
       <SlideShow />
       <Lists />
     </>
   );
 }
 
-function Test() {
+const CheckoutImage = ({ image }) => {
+  return (
+    <div clasName="checkout-img">
+      <Cards
+        style={{
+          width: "30rem",
+          height: "35rem",
+
+          padding: "1rem"
+        }}
+      >
+        <Cards.Img
+          variant="top"
+          src={image}
+          height="90%"
+          style={{ border: "1px solid lightgrey" }}
+        />
+        <Cards.Body>
+          <Cards.Text style={{ textAlign: "center" }}>View FULL</Cards.Text>
+        </Cards.Body>
+      </Cards>
+    </div>
+  );
+};
+const CheckoutDetail = ({ heading, content, number }) => {
+  return (
+    <div className="checkout-detail">
+      <div className="checkout-head">
+        <h2>
+          {heading}{" "}
+          <Badge variant="warning" style={{ color: "white" }}>
+            New
+          </Badge>
+        </h2>
+      </div>
+      <h4>{content}</h4>
+      <div className="checkout-number">Phone No -{number}</div>
+      <br />
+      <br />
+      <ListGroup>
+        <ListGroup.Item>Cras justo odio</ListGroup.Item>
+        <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+        <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+        <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+        <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+      </ListGroup>
+
+      <br />
+      <div style={{ textAlign: "center" }}>
+        <Button variant="warning">Checkout Full</Button>
+      </div>
+    </div>
+  );
+};
+const CheckoutSide = ({ index }) => {
+  return (
+    <Cards style={{ width: "18rem" }}>
+      <Cards.Img variant="top" src={logo} />
+      <Cards.Body>
+        <Cards.Title>Store Page</Cards.Title>
+        <Cards.Text>
+          Follow us on Facebook to get Catalogs & Offers at once!
+        </Cards.Text>
+      </Cards.Body>
+      <ListGroup className="list-group-flush">
+        <ListGroupItem>Some Other Detail</ListGroupItem>
+        <ListGroupItem>Some Other Detail</ListGroupItem>
+        <ListGroupItem>Some Other Detail</ListGroupItem>
+      </ListGroup>
+      <Cards.Body>
+        <Cards.Link href="#">Link</Cards.Link>
+        <Cards.Link href="#">Another Link</Cards.Link>
+      </Cards.Body>
+    </Cards>
+  );
+};
+
+const Checkout = ({ index }) => {
   return (
     <>
-      <Lists />
+      <Breadcrumb className="checkout-bread">
+        <Breadcrumb.Item>Home</Breadcrumb.Item>
+        <Breadcrumb.Item active>Flyer Name</Breadcrumb.Item>
+      </Breadcrumb>
+      <div className="checkout-container">
+        <CheckoutImage image={logo} />
+        <CheckoutDetail
+          heading="Flyer Name"
+          content="detail about flyer"
+          number="Phone Number or other detial"
+        />
+        <CheckoutSide />
+      </div>
     </>
   );
-}
+};
 
 function App() {
   return (
     <div className="App">
       <MemoryRouter>
         <Header />
+        <NavBar />
         <Switch>
-          <Route path="/about">
-            <Test />
+          <Route path="/123">
+            <Checkout index="123" />
           </Route>
           <Route path="/">
             <Home />

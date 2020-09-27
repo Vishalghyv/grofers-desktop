@@ -174,3 +174,18 @@
   font-size: 30px;
   padding: 50px;
 }
+
+.checkout-container {
+  display: flex;
+  width: 80%;
+  margin: 30px 10%;
+}
+
+.checkout-detail {
+  margin: 20px;
+}
+
+.checkout-bread {
+  width: 80%;
+  margin: 10px 10%;
+}
