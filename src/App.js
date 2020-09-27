@@ -76,7 +76,12 @@ function SlideShow() {
       <div className="slide-container">
         <Zoom {...zoomOutProperties}>
           {images.map((each, index) => (
-            <img key={index} className="slideshow-image" src={each} />
+            <img
+              key={index}
+              className="slideshow-image"
+              src={each}
+              alt="Flyer"
+            />
           ))}
         </Zoom>
       </div>
@@ -108,64 +113,74 @@ const Content = ({ heading, content, number }) => {
   );
 };
 
+const ListElement = ({ children }) => {
+  return <div className="list-element">{children}</div>;
+};
+
 function Lists() {
   return (
-    <div className="lists">
-      <Card
-        image={logo}
-        index="123"
-        content=<Content
-          heading="Flyer Nayyme"
-          content="detail about flyer"
-          number="Phone Number or other detial"
+    <>
+      <div className="list-header">
+        <ListElement> Latest Catalog</ListElement>
+        <ListElement> Popular Catalog</ListElement>
+      </div>
+      <div className="lists">
+        <Card
+          image={logo}
+          index="123"
+          content=<Content
+            heading="Flyer Nayyme"
+            content="detail about flyer"
+            number="Phone Number or other detial"
+          />
         />
-      />
-      <Card
-        image={logo}
-        index="123"
-        content=<Content
-          heading="Flyer Name"
-          content="detail about flyer"
-          number="Phone Number or other detial"
+        <Card
+          image={logo}
+          index="123"
+          content=<Content
+            heading="Flyer Name"
+            content="detail about flyer"
+            number="Phone Number or other detial"
+          />
         />
-      />
-      <Card
-        image={logo}
-        index="123"
-        content=<Content
-          heading="Flyer Name"
-          content="detail about flyer"
-          number="Phone Number or other detial"
+        <Card
+          image={logo}
+          index="123"
+          content=<Content
+            heading="Flyer Name"
+            content="detail about flyer"
+            number="Phone Number or other detial"
+          />
         />
-      />
-      <Card
-        image={logo}
-        index="123"
-        content=<Content
-          heading="Flyer Name"
-          content="detail about flyer"
-          number="Phone Number or other detial"
+        <Card
+          image={logo}
+          index="123"
+          content=<Content
+            heading="Flyer Name"
+            content="detail about flyer"
+            number="Phone Number or other detial"
+          />
         />
-      />
-      <Card
-        image={logo}
-        index="123"
-        content=<Content
-          heading="Flyer Name"
-          content="detail about flyer"
-          number="Phone Number or other detial"
+        <Card
+          image={logo}
+          index="123"
+          content=<Content
+            heading="Flyer Name"
+            content="detail about flyer"
+            number="Phone Number or other detial"
+          />
         />
-      />
-      <Card
-        image={logo}
-        index="123"
-        content=<Content
-          heading="Flyer Name"
-          content="detail about flyer"
-          number="Phone Number or other detial"
+        <Card
+          image={logo}
+          index="123"
+          content=<Content
+            heading="Flyer Name"
+            content="detail about flyer"
+            number="Phone Number or other detial"
+          />
         />
-      />
-    </div>
+      </div>
+    </>
   );
 }
 
@@ -177,7 +192,6 @@ function Home() {
   return (
     <>
       <SlideShow />
-      <Lists />
     </>
   );
 }
@@ -293,6 +307,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
+        <Lists />
         <Footer />
       </MemoryRouter>
     </div>
