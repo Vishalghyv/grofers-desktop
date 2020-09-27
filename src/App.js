@@ -6,12 +6,21 @@ import "./App.css";
 import { Button, Form, FormControl } from "react-bootstrap";
 import { Zoom } from "react-slideshow-image";
 
+import { MemoryRouter, Switch, Route } from "react-router-dom";
+
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Container from "react-bootstrap/Container";
+import ButtonToolbar from "react-bootstrap/ButtonToolbar";
+import { LinkContainer } from "react-router-bootstrap";
+
 function Header() {
   return (
     <div className="header">
-      <div className="header-logo">
-        <img src={logo} width="250" height="100" alt="logo" />
-      </div>
+      <LinkContainer to="/">
+        <div className="header-logo">
+          <img src={logo} width="250" height="100" alt="logo" />
+        </div>
+      </LinkContainer>
       <div className="header-search">
         <Form inline>
           <FormControl
@@ -68,64 +77,125 @@ function SlideShow() {
 
 const Card = ({ image, content }) => {
   return (
-    <div className="card-show">
-      <div className="card-image">
-        <img className="card-img" src={image} />
+    <LinkContainer to="/about">
+      <div className="card-show">
+        <div className="card-image">
+          <img className="card-img" src={image} alt="Flyer" />
+        </div>
+        <div className="card-content">{content}</div>
       </div>
-      <div className="card-content">{content}</div>
-    </div>
+    </LinkContainer>
   );
 };
 
 const Content = ({ heading, content, number }) => {
   return (
     <div className="card-detail">
-      <div className="card-head">
-        {heading}
-      </div>
-      <div className="card-cont">
-        {content}
-      </div>
-      <div className="card-number">
-        Phone No -{number}
-      </div>
+      <div className="card-head">{heading}</div>
+      <div className="card-cont">{content}</div>
+      <div className="card-number">Phone No -{number}</div>
     </div>
   );
 };
 
-
-
 function Lists() {
   return (
     <div className="lists">
-      <Card image={logo} content=<Content heading ="Flyer Name" content="detail about flyer" number="Phone Number or other detial"/> />
-      <Card image={logo} content=<Content heading ="Flyer Name" content="detail about flyer" number="Phone Number or other detial"/> />
-      <Card image={logo} content=<Content heading ="Flyer Name" content="detail about flyer" number="Phone Number or other detial"/> />
-      <Card image={logo} content=<Content heading ="Flyer Name" content="detail about flyer" number="Phone Number or other detial"/> />
-      <Card image={logo} content=<Content heading ="Flyer Name" content="detail about flyer" number="Phone Number or other detial"/> />
-      <Card image={logo} content=<Content heading ="Flyer Name" content="detail about flyer" number="Phone Number or other detial"/> />
-
+      <Card
+        image={logo}
+        key="123"
+        content=<Content
+          heading="Flyer Name"
+          content="detail about flyer"
+          number="Phone Number or other detial"
+        />
+      />
+      <Card
+        image={logo}
+        key="123"
+        content=<Content
+          heading="Flyer Name"
+          content="detail about flyer"
+          number="Phone Number or other detial"
+        />
+      />
+      <Card
+        image={logo}
+        key="123"
+        content=<Content
+          heading="Flyer Name"
+          content="detail about flyer"
+          number="Phone Number or other detial"
+        />
+      />
+      <Card
+        image={logo}
+        key="123"
+        content=<Content
+          heading="Flyer Name"
+          content="detail about flyer"
+          number="Phone Number or other detial"
+        />
+      />
+      <Card
+        image={logo}
+        key="123"
+        content=<Content
+          heading="Flyer Name"
+          content="detail about flyer"
+          number="Phone Number or other detial"
+        />
+      />
+      <Card
+        image={logo}
+        key="123"
+        content=<Content
+          heading="Flyer Name"
+          content="detail about flyer"
+          number="Phone Number or other detial"
+        />
+      />
     </div>
   );
 }
 
-function Footer () {
+function Footer() {
+  return <div className="footer">Footer</div>;
+}
+
+function Home() {
   return (
-    <div className="footer">
-      Footer
-    </div>
+    <>
+      <NavBar />
+      <SlideShow />
+      <Lists />
+    </>
   );
 }
 
+function Test() {
+  return (
+    <>
+      <Lists />
+    </>
+  );
+}
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <NavBar />
-      <SlideShow />
-      <Lists />
-      <Footer />
+      <MemoryRouter>
+        <Header />
+        <Switch>
+          <Route path="/about">
+            <Test />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+        <Footer />
+      </MemoryRouter>
     </div>
   );
 }
