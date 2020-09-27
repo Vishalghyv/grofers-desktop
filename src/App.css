@@ -1,5 +1,8 @@
 @import "react-slideshow-image/dist/styles.css";
-
+.modal-90w {
+  width: 70%;
+  max-width: 1000px;
+}
 .header {
   display: flex;
   margin: 10px 10%;

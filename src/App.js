@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./groffery.jpg";
-import left from "./left-arrow.svg";
-import right from "./right-arrow.svg";
 import "./App.css";
+import FlipBook from "./FlipBook";
 import {
   Badge,
   Button,
@@ -10,7 +9,8 @@ import {
   Form,
   FormControl,
   ListGroup,
-  ListGroupItem
+  ListGroupItem,
+  Modal
 } from "react-bootstrap";
 
 import { Card as Cards } from "react-bootstrap";
@@ -18,8 +18,6 @@ import { Zoom } from "react-slideshow-image";
 
 import { MemoryRouter, Switch, Route } from "react-router-dom";
 
-import Container from "react-bootstrap/Container";
-import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { LinkContainer } from "react-router-bootstrap";
 
 function Header() {
@@ -274,6 +272,10 @@ const CheckoutSide = ({ index }) => {
 };
 
 const Checkout = ({ index }) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <>
       <Breadcrumb className="checkout-bread">
@@ -281,7 +283,24 @@ const Checkout = ({ index }) => {
         <Breadcrumb.Item active>Flyer Name</Breadcrumb.Item>
       </Breadcrumb>
       <div className="checkout-container">
-        <CheckoutImage image={logo} />
+        <div style={{ cursor: "pointer" }} onClick={handleShow}>
+          <CheckoutImage image={logo} />
+        </div>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          animation={false}
+          dialogClassName="modal-90w"
+          size="xl"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Flyer Name</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <FlipBook />
+          </Modal.Body>
+        </Modal>
         <CheckoutDetail
           heading="Flyer Name"
           content="detail about flyer"
