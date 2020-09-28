@@ -11,6 +11,9 @@ import second from "./flip-2.jpg";
 import third from "./flip-3.jpg";
 import fourth from "./flip-4.jpg";
 
+import image1 from "./image-1.jpg";
+import image2 from "./image-2.jpg";
+
 const images = [one, second, third, fourth];
 class FlipBook extends Component {
   constructor(props) {
@@ -53,8 +56,8 @@ class FlipBook extends Component {
           touch-action="none"
         >
           <div className="App-page App-page_red">
-            <img src={images[0]} width="50%" height="100%" alt="logo" />
-            <img src={images[1]} width="50%" height="100%" alt="logo" />
+            <img src={image1} width="50%" height="100%" alt="logo" />
+            <img src={image2} width="50%" height="100%" alt="logo" />
           </div>
           <div className="App-page App-page_green">
             <img src={images[2]} width="50%" height="100%" alt="logo" />
