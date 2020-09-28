@@ -13,6 +13,9 @@ import {
   Modal
 } from "react-bootstrap";
 
+import image1 from "./image-1.jpg";
+import image2 from "./image-2.jpg";
+
 import { Card as Cards } from "react-bootstrap";
 import { Zoom } from "react-slideshow-image";
 
@@ -124,7 +127,7 @@ function Lists() {
       </div>
       <div className="lists">
         <Card
-          image={logo}
+          image={image1}
           index="123"
           content=<Content
             heading="Flyer Nayyme"
@@ -142,7 +145,7 @@ function Lists() {
           />
         />
         <Card
-          image={logo}
+          image={image2}
           index="123"
           content=<Content
             heading="Flyer Name"
@@ -160,7 +163,7 @@ function Lists() {
           />
         />
         <Card
-          image={logo}
+          image={image1}
           index="123"
           content=<Content
             heading="Flyer Name"
@@ -284,7 +287,7 @@ const Checkout = ({ index }) => {
       </Breadcrumb>
       <div className="checkout-container">
         <div style={{ cursor: "pointer" }} onClick={handleShow}>
-          <CheckoutImage image={logo} />
+          <CheckoutImage image={image1} />
         </div>
         <Modal
           show={show}
